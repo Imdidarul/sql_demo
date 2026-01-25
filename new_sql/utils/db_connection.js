@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '********',
+    password: '04082002@Didar',
     database: 'testDb'
 })
 
@@ -20,6 +20,23 @@ connection.connect((err)=>{
         name VARCHAR(20),
         email VARCHAR(30)
     )`
+
+    const createBus = `create table IF NOT EXISTS Bus(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        bus_number VARCHAR(10),
+        total_seats VARCHAR(5),
+        available_seats VARCHAR(5)
+    )`
+    
+    connection.execute(createBus,(err)=>{
+        if(err){
+            console.log(err)
+            connection.end()
+            return
+        }
+        console.log("Bus table is ready")
+    })
+
 
     connection.execute(creationQuery,(err)=>{
         if(err){

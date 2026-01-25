@@ -5,6 +5,7 @@ const studentController = require("../controller/studentController")
 router.post("/add",studentController.addEntries)
 router.put("/update/:id",studentController.updateEntry)
 router.delete("/delete/:id",studentController.deleteEntry)
+router.get("/users",studentController.getEntries)
 
 
 module.exports = router

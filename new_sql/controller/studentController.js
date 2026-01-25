@@ -10,7 +10,7 @@ const addEntries = (req,res)=>{
             db.end()
             return
         }
-        console.log("value inserted")
+        console.log("value inserted in students table")
         res.status(200).send(`Student ${name} is added succesfully`)
 })
 }
@@ -66,8 +66,26 @@ const deleteEntry = (req,res)=>{
 }
 
 
+
+const getEntries = (req,res)=>{
+    const getQuery = `SELECT * FROM STUDENTS`
+
+    db.execute(getQuery,(err,results)=>{
+        if(err){
+            console.log(err.message)
+            res.status(500).send(err.message)
+            return
+        }
+
+        console.log("Users are displayed")
+        res.status(200).json(results)
+    })
+}
+
+
 module.exports = {
     addEntries,
     updateEntry,
-    deleteEntry
+    deleteEntry,
+    getEntries
 }
