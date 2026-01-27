@@ -145,7 +145,7 @@ const updateStudent = async (req,res)=>{
         console.log("User updated")
         res.status(200).send("User updated")
     } catch (error) {
-        res.status(500).send("Unable to update")
+        res.status(500).send("Unable to update user")
     }
 }
 
