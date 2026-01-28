@@ -8,6 +8,10 @@ app.use(express.json())
 app.use("/",studentRoute)
 
 
-app.listen(3000,(err)=>{
-    console.log("Server is running!")
-})
+db.sync({force:true}).then(()=>{
+    app.listen(3000,(err)=>{
+        console.log("Server is running!")
+    })
+}).catch((err)=>[
+    console.log(err)
+])   
